@@ -1,0 +1,47 @@
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+
+    grid-template-areas:
+        "schedule logo livescore"
+        "formel-sit images livescore"
+        "livecam . livescore";
+}
+
+.schedule {
+    grid-area: schedule;
+    background-color: rgba(255, 16, 0, 0.54);
+}
+
+.formel-sit {
+    grid-area: formel-sit;
+    background-color: rgba(255, 0, 130, 0.54);
+}
+
+.logo {
+    grid-area: logo;
+    background-color: rgba(255, 189, 0, 0.54);
+}
+
+.livescore {
+    grid-area: livescore;
+    background-color: rgba(157, 255, 0, 0.54);
+}
+
+.images {
+    grid-area: images;
+    background-color: rgba(0, 255, 154, 0.54);
+}
+
+.livecam {
+    grid-area: livecam;
+    background-color: rgba(96, 0, 255, 0.54);
+}
