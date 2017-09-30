@@ -62,3 +62,6 @@ typings/
 
 # IDE specific
 .idea/
+
+# OS specific
+.DS_Store
