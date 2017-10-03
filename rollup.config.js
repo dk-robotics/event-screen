@@ -4,6 +4,8 @@ import uglify from 'rollup-plugin-uglify'
 import replace from 'rollup-plugin-replace'
 import commonjs from 'rollup-plugin-commonjs'
 
+require('dotenv').config()
+
 let production = process.env.NODE_ENV === 'production'
 
 let plugins = [
@@ -12,7 +14,8 @@ let plugins = [
     browser: true
   }),
   replace({
-    'process.env.NODE_ENV': production ? JSON.stringify('production') : JSON.stringify('development')
+    'process.env.NODE_ENV': production ? JSON.stringify('production') : JSON.stringify('development'),
+    'process.env.PEERJS_API_KEY': JSON.stringify(process.env.PEERJS_API_KEY)
   }),
   commonjs()
 ]

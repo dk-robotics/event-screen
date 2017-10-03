@@ -12,44 +12,77 @@ let imageElements = []
 let currentImage = 0;
 let slideshowInterval = null
 
-window.fetch(`https://qpqp.dk/instagram_hashtag_images.php?hashtag=${HASHTAG}`)
-  .then(res => res.json())
-  .then(json => {
-    loadImages(json)
-  })
+function fetchImages () {
+  return window.fetch(`https://qpqp.dk/instagram_hashtag_images.php?hashtag=${HASHTAG}`)
+    .then(res => res.json())
+}
 
-function loadImages (images) {
-  console.log('Loading instagram images', images)
+function loadImages (json) {
+  let imageList = []
 
-  const livescore = document.getElementById('images')
-  livescore.innerHTML = ''
-  imageElements = []
-
-  for (let img of images) {
+  for (let img of json) {
     if (img === null) continue
 
     const imgElm = document.createElement('img')
     imgElm.src = img.display_src
     imgElm.className = classnames('image')
 
-    imageElements.push(imgElm)
-
-    livescore.appendChild(imgElm)
+    imageList.push(imgElm)
   }
 
-  imageElements[currentImage].className = classnames('image', 'shown')
+  return imageList
+}
 
-  startSlideshow();
+function updateSlideshow (images) {
+  console.log('Loading instagram images into slideshow', images)
+
+  const livescore = document.getElementById('images')
+  livescore.innerHTML = ''
+
+  for (let i = 0; i < images.length; i++) {
+    let img = images[i]
+    if (img === null) continue
+
+    img.className = 'image'
+
+    livescore.appendChild(img)
+  }
 }
 
 function startSlideshow () {
-  window.clearInterval(slideshowInterval)
-  slideshowInterval = window.setInterval(() => {
-    currentImage = currentImage >= imageElements.length - 1 ? 0 : currentImage + 1
+  console.log('Starting slideshow')
 
-    for (let i = 0; i < imageElements.length; i++) {
-      imageElements[i].className = classnames('image', { shown: i === currentImage })
+  function update() {
+    if (currentImage >= imageElements.length - 1) {
+      currentImage = 0;
+      fetchImages()
+        .then(json => {
+          imageElements = loadImages(json)
+          updateSlideshow(imageElements)
+
+          for (let i = 0; i < imageElements.length; i++) {
+            imageElements[i].className = classnames('image', { shown: i === currentImage })
+          }
+        })
+    } else {
+      currentImage++
+
+      for (let i = 0; i < imageElements.length; i++) {
+        imageElements[i].className = classnames('image', { shown: i === currentImage })
+      }
     }
+  }
 
-  }, SLIDESHOW_SPEED)
+  window.clearInterval(slideshowInterval)
+  slideshowInterval = window.setInterval(update, SLIDESHOW_SPEED)
+  update();
 }
+
+// Start everything
+
+fetchImages()
+  .then(json => {
+    imageElements = loadImages(json)
+    updateSlideshow(imageElements)
+    startSlideshow()
+  })
