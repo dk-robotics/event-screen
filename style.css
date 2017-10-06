@@ -88,4 +88,10 @@ body {
 
 .livecam {
     grid-area: livecam;
+    padding: 0 !important;
+}
+
+#livefeed {
+    width: 100%;
+    height: 100%;
 }
