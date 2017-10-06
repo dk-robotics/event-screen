@@ -2,7 +2,7 @@ import Peer from 'peerjs'
 
 let peer = new Peer({key: 'p06e3v120tz9f6r'})
 
-let conn = peer.connect('sitcomp17-host')
+let conn = peer.connect(process.env.PEERJS_ID)
 
 peer.on('call', function(call) {
   console.log('call started')

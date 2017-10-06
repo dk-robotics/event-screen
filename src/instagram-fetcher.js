@@ -36,8 +36,8 @@ function loadImages (json) {
 function updateSlideshow (images) {
   console.log('Loading instagram images into slideshow', images)
 
-  const livescore = document.getElementById('images')
-  livescore.innerHTML = ''
+  const slideshow = document.getElementById('images')
+  slideshow.innerHTML = ''
 
   for (let i = 0; i < images.length; i++) {
     let img = images[i]
@@ -45,7 +45,7 @@ function updateSlideshow (images) {
 
     img.className = 'image'
 
-    livescore.appendChild(img)
+    slideshow.appendChild(img)
   }
 }
 
@@ -80,9 +80,11 @@ function startSlideshow () {
 
 // Start everything
 
-fetchImages()
-  .then(json => {
-    imageElements = loadImages(json)
-    updateSlideshow(imageElements)
-    startSlideshow()
-  })
+if (document.getElementById('images')) {
+  fetchImages()
+    .then(json => {
+      imageElements = loadImages(json)
+      updateSlideshow(imageElements)
+      startSlideshow()
+    })
+}
