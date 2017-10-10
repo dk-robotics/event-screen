@@ -1,6 +1,6 @@
 import Peer from 'peerjs'
 
-let peer = new Peer({key: 'p06e3v120tz9f6r'})
+let peer = new Peer({key: process.env.PEERJS_API_KEY})
 
 let conn = peer.connect(process.env.PEERJS_ID)
 
