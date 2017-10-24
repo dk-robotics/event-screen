@@ -48,6 +48,10 @@ body {
 
 .logo {
     grid-area: logo;
+    background-image: url('assets/logo.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .livescore {
@@ -57,12 +61,12 @@ body {
 }
 
 .google-embed {
-    width: calc(100% + 60px);
+    width: calc(100% + 163px);
     height: calc(100% + 200px);
     position: relative;
     border: none 0;
 
-    left: -45px;
+    left: -147px;
     top: -145px;
 }
 
