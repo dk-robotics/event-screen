@@ -5,7 +5,7 @@
 
 import classnames from 'classnames'
 
-const HASHTAG = 'robots'
+const HASHTAG = 'sitcomp17'
 const SLIDESHOW_SPEED = 10 * 1000
 
 let imageElements = []
