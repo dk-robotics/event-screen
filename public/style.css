@@ -22,7 +22,7 @@ body {
 
     grid-template-areas:
         "schedule logo livescore"
-        "formel-sit images livescore"
+        "livecam images livescore"
         "livecam images livescore";
 }
 
