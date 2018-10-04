@@ -7,29 +7,18 @@
   "author": "viktorstrate <viktorstrate@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "rollup -c",
-    "build:prod": "NODE_ENV=production rollup -c",
-    "build:watch": "rollup -cw",
-    "serve": "serve ./public",
+    "build": "rm -rf dist/ && NODE_ENV=production parcel build src/index.html",
+    "start": "parcel src/index.html",
     "deploy": "npm run build:prod && gh-pages -d public"
   },
   "dependencies": {
-    "babel": "^6.23.0",
-    "babel-core": "^6.26.0",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-preset-env": "^1.6.0",
     "classnames": "^2.2.5",
     "dotenv": "^4.0.0",
     "gh-pages": "^1.0.0",
-    "peerjs": "^0.3.14",
-    "rollup": "^0.50.0",
-    "rollup-plugin-babel": "^3.0.2",
-    "rollup-plugin-commonjs": "^8.2.1",
-    "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-replace": "^2.0.0",
-    "rollup-plugin-uglify": "^2.0.1",
-    "serve": "^6.1.0",
-    "standard": "^10.0.3",
-    "vue": "^2.4.4"
+    "parcel": "^1.10.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0"
   }
 }
