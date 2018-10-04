@@ -6,4 +6,4 @@ var e;!function(){"use strict";var r={}.hasOwnProperty;function n(){for(var e=[]
 },{"classnames":"9qb7"}],"d6sW":[function(require,module,exports) {
 "use strict";require("./instagram-fetcher"),console.log("Scripts loaded");
 },{"./instagram-fetcher":"k1sS"}]},{},["d6sW"], null)
-//# sourceMappingURL=/main.5e2f5ae7.map
+//# sourceMappingURL=https://dk-robotics.github.io/event-screen/main.5e2f5ae7.map
