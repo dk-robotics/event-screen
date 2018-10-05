@@ -5,7 +5,7 @@
 
 import classnames from 'classnames'
 
-const HASHTAG = 'sitcomp17'
+const HASHTAG = 'htxrobotics18'
 const SLIDESHOW_SPEED = 10 * 1000
 
 document.getElementById('hashtag').innerHTML = '#' + HASHTAG
